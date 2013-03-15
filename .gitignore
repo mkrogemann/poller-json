@@ -1,0 +1,6 @@
+/coverage
+/rspec
+/Gemfile.lock
+/doc
+/*.gem
+.DS_Store
