@@ -4,3 +4,4 @@
 /doc
 /*.gem
 .DS_Store
+/.rvmrc
