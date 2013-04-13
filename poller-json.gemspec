@@ -14,8 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "poller-json"
   gem.require_paths = ["lib"]
   gem.version       = PollerJSON::VERSION
-  gem.add_dependency('poller')
-  gem.add_dependency('multi_json', '~> 1.7.2')
+  gem.add_runtime_dependency('poller')
+  gem.add_runtime_dependency('multi_json', '~> 1.7.2')
   gem.add_development_dependency('rspec', '~> 2.13.0')
   gem.add_development_dependency('simplecov', '~> 0.7.1')
 end
