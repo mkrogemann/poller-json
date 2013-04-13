@@ -4,7 +4,7 @@ require File.expand_path('../lib/poller/json/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Markus Krogemann"]
   gem.email         = ["markus@krogemann.de"]
-  gem.description   = %q{JSON matchers to be used on top of the 'poller' gem}
+  gem.description   = %q{JSON matchers that can be used on top of the 'poller' gem}
   gem.summary       = %q{JSON matchers}
   gem.homepage      = "https://github.com/mkrogemann/poller-json"
   gem.license       = 'MIT'
