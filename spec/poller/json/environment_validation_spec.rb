@@ -9,6 +9,5 @@ module Poller
   	  	json.class.should == Hash
   	  end
   	end
-
   end
 end
