@@ -13,7 +13,7 @@ Design
 
 The gem has been developed to run in Ruby 1.9.3 and is being continuously integrated in (MRI) Ruby 2.0.0, 1.9.3 and 1.8.7.
 
-In order to provide JSON parsing capability, the gem makes use of further gems: [multi_json](https://github.com/intridea/multi_json) on all platforms and [json_pure](http://flori.github.io/json/) in the case of Ruby 1.8.7.
+In order to provide JSON parsing capability, the gem makes use of further gems: [multi_json](https://github.com/intridea/multi_json) on all platforms and [json](http://flori.github.io/json/) in the case of Ruby 1.8.7.
 
 Of course, another dependency is the [poller](https://github.com/mkrogemann/poller) gem.
 
