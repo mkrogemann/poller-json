@@ -26,7 +26,7 @@ In order to familiarize yourself with the underlying [poller](https://github.com
 
 Complementary to this section, there is also a [Wiki](https://github.com/mkrogemann/poller-json/wiki) page that has specific information about this gem (the poller-json rubygem) with more [Usage Examples](https://github.com/mkrogemann/poller-json/wiki/Usage-Examples).
 
-Here is one simple three-step example for how to make use of poller-json:
+Here is one simple three-step example of how to make use of poller-json:
 
     require 'poller/poller_json'
 
@@ -62,7 +62,7 @@ For the following discussion, consider this given JSON document:
       }
     }}
 
-The only feature that is currently implemented is the ability to navigate along a very simple path such as show in these examples:
+The only feature that is currently implemented is the ability to navigate along a very simple path such as those shown in these examples:
 
     $menu.popup.menuitem[1].value
 
@@ -84,7 +84,7 @@ would yield
 
 The intention of this very basic JSONPath implementation is to be compatible with the JSONPath design document and thus with alternative JSONPath implementations. To simply switch to using the [jsonpath](https://github.com/joshbuddy/jsonpath) rubygem is not an option right now mainly due to its missing support for Ruby 1.8.7.
 
-The depth of the JSONPath implementation is also considered to be covering all use cases of poller-json.
+The depth of the JSONPath implementation is covering all current use cases of poller-json.
 
 As far as future development is concerned: I welcome Pull requests, proposals for additional features and bug reports.
 
