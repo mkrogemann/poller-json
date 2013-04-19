@@ -13,15 +13,23 @@ module Matchers
         path = path[1..-1] if path.start_with?('$') # TODO: check jsonpath syntax and raise error
         path_items = path.split('.')
         child_node = json_hash
-        path_items.each do |path_item|
-          path_item = path_item.sub('[\'', '').sub('\']', '') if path_item.start_with?('[\'')
-          path_item, index = path_item.split('[')
-          child_node = child_node.send(:fetch, path_item)
-          if index
-            index = index[0..-2].to_i
-            child_node = child_node.send(:fetch, index)
+          path_items.each do |path_item|
+            path_item = path_item.sub('[\'', '').sub('\']', '') if path_item.start_with?('[\'')
+            path_item, index = path_item.split('[')
+            begin
+              child_node = child_node.send(:fetch, path_item)
+            rescue KeyError
+              return nil
+            end
+            if index
+              index = index[0..-2].to_i
+              begin
+                child_node = child_node.send(:fetch, index)
+              rescue IndexError
+                return nil
+              end
+            end
           end
-        end
         child_node
       end
     end

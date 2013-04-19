@@ -7,10 +7,11 @@ module Matchers
         @json_path = json_path
       end
 
+      # @param document_s [String] - the document given as String
+      # Exceptions caught by JSON Parserwill be thrown up the stack
+      # ::JSON::ParserError in the case of invalid JSON
       def matches?(document_s)
-        # TODO: handle JSON parser error
         json_hash = ::JSON.parse(document_s)
-        # TODO: handle missing elements along path
         !value_on_path(json_hash, @json_path).nil?
       end
     end
