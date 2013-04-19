@@ -18,7 +18,7 @@ module Matchers
             path_item, index = path_item.split('[')
             begin
               child_node = child_node.send(:fetch, path_item)
-            rescue KeyError
+            rescue IndexError
               return nil
             end
             if index
