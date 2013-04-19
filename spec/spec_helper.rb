@@ -1,11 +1,13 @@
-require 'json_helpers'
-
 if ENV['COVERAGE'] == 'true'
   require 'simplecov'
 end
 
-require 'coveralls'
-Coveralls.wear!
+if ENV['TRAVIS'] == 'true'
+  require 'coveralls'
+  Coveralls.wear!
+end
+
+require 'json_helpers'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
