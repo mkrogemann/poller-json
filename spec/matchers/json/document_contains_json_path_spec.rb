@@ -36,6 +36,14 @@ module Matchers
             dcj.matches?(sample_json_string).should be_false
           end
         end
+
+        context 'integration testing' do
+          it 'succeeds in fetching JSON result and finds expected path', :type => 'integration' do
+            matcher = DocumentContainsJSONPath.new('geoplugin_countryName')
+            poller = Poller::HTTP::HttpPoller.new('http://www.geoplugin.net/json.gp?ip=216.113.168.141', matcher, 5.0, 1.0)
+            poller.check.should be_nil
+          end
+        end
       end
     end
   end

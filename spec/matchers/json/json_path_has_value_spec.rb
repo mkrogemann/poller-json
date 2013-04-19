@@ -11,6 +11,15 @@ module Matchers
             jhv.matches?(sample_json_string).should be_true
           end
         end
+
+        context 'integration testing' do
+          it 'succeeds in fetching JSON result and finds expected value for given path', :type => 'integration' do
+            matcher = JSONPathHasValue.new('geoplugin_currencyCode', 'USD')
+            poller = Poller::HTTP::HttpPoller.new('http://www.geoplugin.net/json.gp?ip=216.113.168.141', matcher, 5.0, 1.0)
+            poller.check.should be_nil
+          end
+        end
+
       end
     end
   end
