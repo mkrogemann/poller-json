@@ -5,15 +5,88 @@ poller-json
 [![Code Climate](https://codeclimate.com/github/mkrogemann/poller-json.png)](https://codeclimate.com/github/mkrogemann/poller-json)
 [![Coverage Status](https://coveralls.io/repos/mkrogemann/poller-json/badge.png?branch=master)](https://coveralls.io/r/mkrogemann/poller-json)
 [![Dependency Status](https://gemnasium.com/mkrogemann/poller-json.png)](https://gemnasium.com/mkrogemann/poller-json)
+[![Gem Version](https://badge.fury.io/rb/poller-json.png)](http://badge.fury.io/rb/poller-json)
 
-An extension of poller offering JSON matchers
+An extension of [poller](https://github.com/mkrogemann/poller) offering JSON matchers
 
+Installation
+------------
+The gem can be installed in the usual ways. Either let bundler take care of it and add to your Gemfile like this:
 
-Scope
+    gem 'poller-json'
+
+Or install it directly on your command line
+
+    gem install poller-json
+
+Usage
 -----
 
-TBD: describe the limited JSONPath support
+In order to familiarize yourself with the underlying [poller](https://github.com/mkrogemann/poller) gem, check out its [README](https://github.com/mkrogemann/poller) and its [Wiki](https://github.com/mkrogemann/poller/wiki).
 
+Complementary to this section, there is also a [Wiki](https://github.com/mkrogemann/poller-json/wiki) page that has specific information about this gem (the poller-json rubygem) with more [Usage Examples](https://github.com/mkrogemann/poller-json/wiki/Usage-Examples).
+
+Here is one simple three-step example for how to make use of poller-json:
+
+    require 'poller/poller_json'
+
+    matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]',
+      '{\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}')
+    #  alternatively, pass expected object in as a Hash
+
+    poller = Poller::HTTP::HttpPoller.new('http://your.sut.example.com', matcher, 5.0, 1.0)
+    #  timeout 5s, poll every 1s
+
+    poller.check
+
+In the example above, the expected JSON Object is passed into the matcher as a String. In this case, you have to escape the quotes within the object as shown in the example.
+
+Since a JSON Object is parsed into a Ruby Hash by the [JSON](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/json/rdoc/JSON.html)::parse method, you can also pass in the expected object as a Ruby Hash, which you could produce comfortably in your tests by using JSON::parse('{...}') on String representations of your expected JSON Objects, JSON Arrays or JSON Values.
+
+Scope &amp; Feature Requests
+----------------------------
+
+The gem brings with it a very limited implementation of [JSONPath](http://goessner.net/articles/JsonPath/). The implementation is contained in the class lib/matchers/json/json_path.rb.
+
+For the following discussion, consider this given JSON document:
+
+    {"menu": {
+      "id": "file",
+      "value": "File",
+      "popup": {
+        "menuitem": [
+          {"value": "New", "onclick": "CreateNewDoc()"},
+          {"value": "Open", "onclick": "OpenDoc()"},
+          {"value": "Close", "onclick": "CloseDoc()"}
+        ]
+      }
+    }}
+
+The only feature that is currently implemented is the ability to navigate along a very simple path such as show in these examples:
+
+    $menu.popup.menuitem[1].value
+
+applied to the above document would yield the simple value
+
+     Open
+
+and
+
+    $menu.popup.menuitem
+
+would yield
+
+    [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+
+The intention of this very basic JSONPath implementation is to be compatible with the JSONPath design document and thus with alternative JSONPath implementations. To simply switch to using the [jsonpath](https://github.com/joshbuddy/jsonpath) rubygem is not an option right now mainly due to its missing support for Ruby 1.8.7.
+
+The depth of the JSONPath implementation is also considered to be covering all use cases of poller-json.
+
+As far as future development is concerned: I welcome Pull requests, proposals for additional features and bug reports.
 
 Design
 ------
