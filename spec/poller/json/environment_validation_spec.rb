@@ -4,7 +4,7 @@ require 'poller/poller_json'
 module Poller
   module JSON
   	describe 'Environment Validation' do
-  	  it 'can parse JSON?' do
+  	  it 'can parse JSON?', :type => 'integration' do
   	  	json = ::JSON::parse(sample_json_document)
 
   	  	json.class.should == Hash
