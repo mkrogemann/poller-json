@@ -8,7 +8,7 @@ module Matchers
         context 'Document has expected simple value for given JSONPath' do
           it 'returns true if given JSONPath holds the expected simple value' do
             jhv = JSONPathHasValue.new('$menu.popup.menuitem[2].value', "Close")
-            jhv.matches?(sample_json_string).should be_true
+            jhv.matches?(sample_json_document).should be_true
           end
         end
 

@@ -1,5 +1,5 @@
 module JSONHelpers
-  def sample_json_string
+  def sample_json_document
     <<-EOS
     {"menu": {
       "id": "file",
@@ -15,7 +15,7 @@ module JSONHelpers
     EOS
   end
 
-  def sample_json_array_string
+  def sample_json_array
     <<-EOS
     [
       {"value": "New", "onclick": "CreateNewDoc()"},
@@ -25,7 +25,7 @@ module JSONHelpers
     EOS
   end
 
-  def sample_json_object_string
+  def sample_json_object
     <<-EOS
     {"value": "Close", "onclick": "CloseDoc()"}
     EOS
