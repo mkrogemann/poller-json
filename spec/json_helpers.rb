@@ -1,4 +1,5 @@
 module JSONHelpers
+
   def sample_json_document
     <<-EOS
     {"menu": {
