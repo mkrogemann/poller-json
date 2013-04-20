@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.1.2 - unrelease
+-------------
+
+* Add rudimentary regex checking for json path expression
+
 Version 0.1.1 - released 2013-04-19
 -------------
 
