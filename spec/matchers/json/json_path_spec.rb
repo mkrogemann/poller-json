@@ -44,36 +44,36 @@ module Matchers
         end
       end
 
-      describe '#validate_json_path' do
+      describe '#json_path_valid?' do
         context 'valid dot-notation' do
           it 'returns true for valid json path expression' do
             json_path_holder = JSONPathHolder.new
-            json_path_holder.valid_json_path?('$menu.popup.menuitem[0].value').should be_true
-            json_path_holder.valid_json_path?('$menu_1.popup.menuitem[0].value').should be_true
+            json_path_holder.json_path_valid?('$menu.popup.menuitem[0].value').should be_true
+            json_path_holder.json_path_valid?('$menu_1.popup.menuitem[0].value').should be_true
           end
         end
 
         context 'invalid dot-notation' do
           it 'returns false for invalid json path expression' do
             json_path_holder = JSONPathHolder.new
-            json_path_holder.valid_json_path?('menu.popup.menuitem[0].value').should be_false
-            json_path_holder.valid_json_path?('$menu.popup.menuitem[0].value.').should be_false
+            json_path_holder.json_path_valid?('menu.popup.menuitem[0].value').should be_false
+            json_path_holder.json_path_valid?('$menu.popup.menuitem[0].value.').should be_false
           end
         end
 
         context 'valid bracket-notation' do
           it 'returns true for valid json path expression' do
             json_path_holder = JSONPathHolder.new
-            json_path_holder.valid_json_path?("$['menu'].['popup'].['menuitem'][0].['value']").should be_true
-            json_path_holder.valid_json_path?("$['menu'].['popup_3'].['menuitem'][0].['value']").should be_true
+            json_path_holder.json_path_valid?("$['menu'].['popup'].['menuitem'][0].['value']").should be_true
+            json_path_holder.json_path_valid?("$['menu'].['popup_3'].['menuitem'][0].['value']").should be_true
           end
         end
 
         context 'invalid bracket-notation' do
           it 'returns false for invalid json path expression' do
             json_path_holder = JSONPathHolder.new
-            json_path_holder.valid_json_path?("['menu'].['popup'].['menuitem'][0].['value']").should be_false
-            json_path_holder.valid_json_path?("$['menu'].['popup'].['menuitem'][0].['value'].").should be_false
+            json_path_holder.json_path_valid?("['menu'].['popup'].['menuitem'][0].['value']").should be_false
+            json_path_holder.json_path_valid?("$['menu'].['popup'].['menuitem'][0].['value'].").should be_false
           end
         end
       end
