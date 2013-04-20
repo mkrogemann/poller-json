@@ -1,1 +1,2 @@
-- figure out how to trigger downstream builds on changes in dependencies (Travis)
+- improve regular expressions in json_path
+- simplify json_path class
