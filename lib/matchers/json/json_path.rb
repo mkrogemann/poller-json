@@ -10,7 +10,7 @@ module Matchers
   module JSON
     module JSONPath
       def value_on_path(json_hash, path)
-        raise ArgumentError, "Invalid json path: #{path}" unless validate_json_path(path)
+        raise ArgumentError, "Invalid json path: #{path}" unless valid_json_path?(path)
         path = path[1..-1] if path.start_with?('$')
         path_items = path.split('.')
         child_node = json_hash # start traversal at document root
@@ -35,13 +35,10 @@ module Matchers
       end
 
       # TODO: the regular expressions below will only catch a few of the possible errors
-      def validate_json_path(path)
+      def valid_json_path?(path)
         notation = path.include?('[\'') ? :bracket : :dot
-        if notation == :dot
-          path_regex = /^\$[a-zA-Z0-9_(\[\d\])\.]*[^\.]$/
-        else
-          path_regex = /^\$[a-zA-Z0-9_(\[\d\])\.\']*[^\.]$/
-        end
+        path_regex = /^\$[a-zA-Z0-9_(\[\d\])\.]*[^\.]$/ if notation == :dot
+        path_regex = /^\$[a-zA-Z0-9_(\[\d\])\.\']*[^\.]$/ if notation == :bracket
         path_regex.match(path)
       end
     end
