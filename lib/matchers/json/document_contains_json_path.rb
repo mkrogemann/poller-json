@@ -8,7 +8,7 @@ module Matchers
       end
 
       # @param document_s [String] - the document given as String
-      # Exceptions caught by JSON Parserwill be thrown up the stack
+      # Exceptions caught by JSON Parser will be thrown up the stack
       # ::JSON::ParserError in the case of invalid JSON
       def matches?(document_s)
         json_hash = ::JSON.parse(document_s)
