@@ -9,30 +9,48 @@
 module Matchers
   module JSON
     module JSONPath
+
       def value_on_path(json_hash, path)
         raise ArgumentError, "Invalid json path: #{path}" unless json_path_valid?(path)
-        path = path[1..-1] if path.start_with?('$')
-        path_items = path.split('.')
-        child_node = json_hash # start traversal at document root
-          path_items.each do |path_item|
-            path_item = path_item.sub('[\'', '').sub('\']', '') if path_item.start_with?('[\'')
-            path_item, index = path_item.split('[')
+        current_node = json_hash # start traversal at document root
+        path_items(path).each do |path_item|
+          path_elem, index = decompose_path_item(path_item)
+
+          # current_node = fetch(current_node, path, index)
+
+          begin
+            current_node = current_node.send(:fetch, path_elem)
+          rescue IndexError
+            return nil
+          end
+          if index
+            index = index[0..-2].to_i
             begin
-              child_node = child_node.send(:fetch, path_item)
+              current_node = current_node.send(:fetch, index)
             rescue IndexError
               return nil
             end
-            if index
-              index = index[0..-2].to_i
-              begin
-                child_node = child_node.send(:fetch, index)
-              rescue IndexError
-                return nil
-              end
-            end
           end
-        child_node
+
+
+        end
+        current_node
       end
+
+      # sanitize & split path
+      def path_items(path)
+        path = path[1..-1] if path.start_with?('$')
+        path_items = path.split('.')
+      end
+      private :path_items
+
+      # if the pathitem contains an index ('sample[3]') then the index will be returned
+      # if not, then only the path_elem will be non-nil
+      def decompose_path_item(path_item)
+        _path_item = path_item.start_with?('[\'') ? path_item.sub('[\'', '').sub('\']', '') : path_item
+        path_elem, index = _path_item.split('[')
+      end
+      private :decompose_path_item
 
       # TODO: the regular expressions below will only catch a few of the possible errors
       def json_path_valid?(path)
