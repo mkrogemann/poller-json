@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.1.2 - unrelease
+Version 0.1.2 - unreleased
 -------------
 
 * Add rudimentary regex checking for json path expression
