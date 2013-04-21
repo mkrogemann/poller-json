@@ -14,41 +14,37 @@ module Matchers
         raise ArgumentError, "Invalid json path: #{path}" unless json_path_valid?(path)
         current_node = json_hash # start traversal at document root
         path_items(path).each do |path_item|
-          path_elem, index = decompose_path_item(path_item)
-
-          # current_node = fetch(current_node, path, index)
-
+          element, index = decompose_path_item(path_item)
           begin
-            current_node = current_node.send(:fetch, path_elem)
+            current_node = fetch(current_node, element, index)
           rescue IndexError
             return nil
           end
-          if index
-            index = index[0..-2].to_i
-            begin
-              current_node = current_node.send(:fetch, index)
-            rescue IndexError
-              return nil
-            end
-          end
-
-
         end
         current_node
       end
 
-      # sanitize & split path
+      def fetch(current_node, element, index)
+        current_node = current_node.send(:fetch, element)
+        current_node = current_node.send(:fetch, index) if index
+        current_node
+      end
+      private :fetch
+
       def path_items(path)
         path = path[1..-1] if path.start_with?('$')
         path_items = path.split('.')
       end
       private :path_items
 
-      # if the pathitem contains an index ('sample[3]') then the index will be returned
-      # if not, then only the path_elem will be non-nil
+      # if the path item contains an index (eg 'sample[3]') then the index will be returned
+      # if not, second return value will be nil [element,index]
+      # TODO: does two things: decide on syntax and decompose
       def decompose_path_item(path_item)
-        _path_item = path_item.start_with?('[\'') ? path_item.sub('[\'', '').sub('\']', '') : path_item
-        path_elem, index = _path_item.split('[')
+        path_item = path_item.sub('[\'', '').sub('\']', '') if path_item.start_with?('[\'')
+        element, index = path_item.split('[')
+        index = index[0..-2].to_i if index
+        [element, index]
       end
       private :decompose_path_item
 
