@@ -32,8 +32,7 @@ module Matchers
       private :fetch
 
       def path_items(path)
-        path = path[1..-1] if path.start_with?('$')
-        path_items = path.split('.')
+        path[1..-1].split('.') # removing the leading '$'
       end
       private :path_items
 
