@@ -1,10 +1,12 @@
 Changelog
 =========
 
-Version 0.1.2 - unreleased
+Version 0.1.2 - released 2013-04-21
 -------------
 
 * Add rudimentary regex checking for json path expression
+* More restrictive on poller dependency
+* Refactor json_path.rb
 
 Version 0.1.1 - released 2013-04-19
 -------------
