@@ -33,23 +33,15 @@ module Matchers
         path_regex.match(path)
       end
 
+      private
       def translate_to_dot_notation(path)
         path = path.gsub('[\'', '').gsub('\']', '') if path.include?('[\'')
         path
       end
-      private :translate_to_dot_notation
 
       def path_items(path)
         path[1..-1].split('.') # removing the leading '$'
       end
-      private :path_items
-
-      def fetch(current_node, element, index)
-        current_node = current_node.send(:fetch, element)
-        current_node = current_node.send(:fetch, index) if index
-        current_node
-      end
-      private :fetch
 
       # if the path item contains an index (eg 'sample[3]') then the index will be returned
       # if not, second return value will be nil [element,index]
@@ -58,7 +50,12 @@ module Matchers
         index = index[0..-2].to_i if index
         [element, index]
       end
-      private :decompose_path_item
+
+      def fetch(current_node, element, index)
+        current_node = current_node.send(:fetch, element)
+        current_node = current_node.send(:fetch, index) if index
+        current_node
+      end
 
     end
   end
