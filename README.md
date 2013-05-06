@@ -7,7 +7,7 @@ poller-json
 [![Dependency Status](https://gemnasium.com/mkrogemann/poller-json.png)](https://gemnasium.com/mkrogemann/poller-json)
 [![Gem Version](https://badge.fury.io/rb/poller-json.png)](http://badge.fury.io/rb/poller-json)
 
-An extension of [poller](https://github.com/mkrogemann/poller) offering JSON matchers
+An extension of [poller](https://github.com/mkrogemann/poller) offering JSON matchers. Please consult the poller [README](https://github.com/mkrogemann/poller) before trying to use this gem to make the experience as smooth as possible.
 
 Installation
 ------------
