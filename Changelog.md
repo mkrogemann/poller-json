@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.1.3 - unreleased
+-------------
+
+* improve dependency management (use bundler's platforms feature)
+
 Version 0.1.2 - released 2013-04-21
 -------------
 
