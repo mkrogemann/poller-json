@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Version 0.1.4 - released 2013-05-07
+-------------
+
+* the bundler 'platforms' feature does not make sure to install 'json' in MRI 1.8.7 -> revert
+
 Version 0.1.3 - released 2013-05-07
 -------------
 
