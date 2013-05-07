@@ -16,7 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = Poller::JSON::VERSION
   gem.add_runtime_dependency('poller', '>= 0.4.1')
   gem.add_runtime_dependency('multi_json', '~> 1.7.2')
-  gem.add_runtime_dependency('json', '~> 1.7.7') if RUBY_VERSION == '1.8.7'
   gem.add_development_dependency('rspec', '~> 2.13.0')
   gem.add_development_dependency('simplecov', '~> 0.7.1')
 end
