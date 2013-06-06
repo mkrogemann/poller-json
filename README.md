@@ -35,7 +35,8 @@ Here is one simple four-step example of how to make use of poller-json:
 ```ruby
 require 'poller/poller_json'
 
-json_object = ::JSON.parse('{"value": "Close", "onclick": "CloseDoc()"}')
+json_object = '{"value": "Close", "onclick": "CloseDoc()"}'
+
 matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]', json_object)
 #  alternatively, pass expected object in as a Hash
 
