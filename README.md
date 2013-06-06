@@ -30,13 +30,13 @@ In order to familiarize yourself with the underlying [poller](https://github.com
 
 Complementary to this section, there is also a [Wiki](https://github.com/mkrogemann/poller-json/wiki) page that has specific information about this gem (the poller-json rubygem) with more [Usage Examples](https://github.com/mkrogemann/poller-json/wiki/Usage-Examples).
 
-Here is one simple three-step example of how to make use of poller-json:
+Here is one simple four-step example of how to make use of poller-json:
 
 ```ruby
 require 'poller/poller_json'
 
-matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]',
-  '{\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}')
+json_object = ::JSON.parse('{"value": "Close", "onclick": "CloseDoc()"}')
+matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]', json_object)
 #  alternatively, pass expected object in as a Hash
 
 poller = Poller::HTTP::HttpPoller.new('http://your.sut.example.com', matcher, 5.0, 1.0)
@@ -82,12 +82,12 @@ applied to the above document would yield the simple value
 
 and
 
-```ruby 
+```ruby
 $menu.popup.menuitem
 ```
 
 would yield
-       
+
 ```json
 [
   {"value": "New", "onclick": "CreateNewDoc()"},
