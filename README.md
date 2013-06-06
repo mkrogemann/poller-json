@@ -13,11 +13,15 @@ Installation
 ------------
 The gem can be installed in the usual ways. Either let bundler take care of it and add to your Gemfile like this:
 
-    gem 'poller-json'
+```sh
+gem 'poller-json'
+```
 
 Or install it directly on your command line
 
-    gem install poller-json
+```sh
+gem install poller-json
+```
 
 Usage
 -----
@@ -64,7 +68,7 @@ For the following discussion, consider this given JSON document:
     ]
   }
 }}
-```    
+```
 
 The only feature that is currently implemented is the ability to navigate along a very simple path such as those shown in these examples:
 
