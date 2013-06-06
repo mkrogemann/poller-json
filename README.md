@@ -13,7 +13,7 @@ Installation
 ------------
 The gem can be installed in the usual ways. Either let bundler take care of it and add to your Gemfile like this:
 
-```sh
+```ruby
 gem 'poller-json'
 ```
 
@@ -72,7 +72,9 @@ For the following discussion, consider this given JSON document:
 
 The only feature that is currently implemented is the ability to navigate along a very simple path such as those shown in these examples:
 
-    $menu.popup.menuitem[1].value
+```ruby
+$menu.popup.menuitem[1].value
+```
 
 applied to the above document would yield the simple value
 
@@ -80,15 +82,19 @@ applied to the above document would yield the simple value
 
 and
 
-    $menu.popup.menuitem
+```ruby 
+$menu.popup.menuitem
+```
 
 would yield
-
-    [
-      {"value": "New", "onclick": "CreateNewDoc()"},
-      {"value": "Open", "onclick": "OpenDoc()"},
-      {"value": "Close", "onclick": "CloseDoc()"}
-    ]
+       
+```json
+[
+  {"value": "New", "onclick": "CreateNewDoc()"},
+  {"value": "Open", "onclick": "OpenDoc()"},
+  {"value": "Close", "onclick": "CloseDoc()"}
+]
+```
 
 The intention of this very basic JSONPath implementation is to be compatible with the JSONPath design document and thus with alternative JSONPath implementations. To simply switch to using the [jsonpath](https://github.com/joshbuddy/jsonpath) rubygem is not an option right now mainly due to its missing support for Ruby 1.8.7.
 
