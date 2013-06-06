@@ -28,16 +28,18 @@ Complementary to this section, there is also a [Wiki](https://github.com/mkrogem
 
 Here is one simple three-step example of how to make use of poller-json:
 
-    require 'poller/poller_json'
+```ruby
+require 'poller/poller_json'
 
-    matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]',
-      '{\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}')
-    #  alternatively, pass expected object in as a Hash
+matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]',
+  '{\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}')
+#  alternatively, pass expected object in as a Hash
 
-    poller = Poller::HTTP::HttpPoller.new('http://your.sut.example.com', matcher, 5.0, 1.0)
-    #  timeout 5s, poll every 1s
+poller = Poller::HTTP::HttpPoller.new('http://your.sut.example.com', matcher, 5.0, 1.0)
+#  timeout 5s, poll every 1s
 
-    poller.check
+poller.check
+```
 
 In the example above, the expected JSON Object is passed into the matcher as a String. In this case, you have to escape the quotes within the object as shown in the example.
 
@@ -50,17 +52,19 @@ The gem brings with it a very limited implementation of [JSONPath](http://goessn
 
 For the following discussion, consider this given JSON document:
 
-    {"menu": {
-      "id": "file",
-      "value": "File",
-      "popup": {
-        "menuitem": [
-          {"value": "New", "onclick": "CreateNewDoc()"},
-          {"value": "Open", "onclick": "OpenDoc()"},
-          {"value": "Close", "onclick": "CloseDoc()"}
-        ]
-      }
-    }}
+```json
+{"menu": {
+  "id": "file",
+  "value": "File",
+  "popup": {
+    "menuitem": [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+  }
+}}
+```    
 
 The only feature that is currently implemented is the ability to navigate along a very simple path such as those shown in these examples:
 
