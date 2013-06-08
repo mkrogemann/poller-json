@@ -47,9 +47,9 @@ poller = Poller::HTTP::HttpPoller.new('http://your.sut.example.com', matcher, 5.
 poller.check
 ```
 
-In the example above, the expected JSON Object is passed into the matcher as a String. In this case, you have to escape the quotes within the object as shown in the example.
+In the example above, the expected JSON Object is passed into the matcher as a String.
 
-Since a JSON Object is parsed into a Ruby Hash by the [JSON](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/json/rdoc/JSON.html)::parse method, you can also pass in the expected object as a Ruby Hash, which you could produce comfortably in your tests by using JSON::parse('{...}') on String representations of your expected JSON Objects, JSON Arrays or JSON Values. More about these three fundamental concepts of JSON can be found at [json.org](http://www.json.org/).
+Since a JSON Object is parsed into a Ruby Hash by the [JSON](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/json/rdoc/JSON.html)::parse method, you can also pass in the expected object as a Ruby Hash, which you could produce comfortably in your tests by using ::JSON::parse('{...}') on String representations of your expected JSON Objects, JSON Arrays or JSON Values. More about these three fundamental concepts of JSON can be found at [json.org](http://www.json.org/).
 
 Scope &amp; Feature Requests
 ----------------------------
