@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Version 0.1.5 - not yet released
+Version 0.1.5 - released 2013-06-09
 -------------
 
 * Improve usage example in README
