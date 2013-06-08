@@ -4,8 +4,9 @@ Changelog
 Version 0.1.5 - not yet released
 -------------
 
-* Fix usage example in README
+* Improve usage example in README
 * Use github code highlighting feature in README
+* Replace inheritance with a bit more code and mixins in matchers
 
 Version 0.1.4 - released 2013-05-07
 -------------
