@@ -36,9 +36,10 @@ Here is one simple four-step example of how to make use of poller-json:
 require 'poller/poller_json'
 
 json_object = '{"value": "Close", "onclick": "CloseDoc()"}'
+# this example specifies expected json object as a String
+# alternatively, pass the expected object in as a Hash as produced by ::JSON.parse()
 
 matcher = Matchers::JSON::JSONPathHasObject.new('$menu.popup.menuitem[2]', json_object)
-#  alternatively, pass expected object in as a Hash
 
 poller = Poller::HTTP::HttpPoller.new('http://your.sut.example.com', matcher, 5.0, 1.0)
 #  timeout 5s, poll every 1s
