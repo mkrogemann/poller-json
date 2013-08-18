@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+Version 0.1.6 - released 2013-08-18
+-------------
+
+* update dependencies (includes poller Gem)
+
 Version 0.1.5 - released 2013-06-09
 -------------
 
