@@ -1,6 +1,10 @@
 Changelog
 =========
 
+Version 0.1.7 - unreleased
+-------------
+
+* Refactoring (remove duplication)
 
 Version 0.1.6 - released 2013-08-18
 -------------
