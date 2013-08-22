@@ -72,13 +72,13 @@ For the following discussion, consider this given JSON document:
 }}
 ```
 
-The only feature that is currently implemented is the ability to navigate along a very simple path such as those shown in these examples:
+The one feature that is currently implemented is the ability to navigate along a very simple path such as those shown in these examples:
 
 ```ruby
 $menu.popup.menuitem[1].value
 ```
 
-applied to the above document would yield the simple value
+This expression applied to the above document would yield the simple value
 
      Open
 
