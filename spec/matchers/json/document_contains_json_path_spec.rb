@@ -41,7 +41,10 @@ module Matchers
           it 'succeeds in fetching JSON result and finds expected path', :type => 'integration' do
             matcher = DocumentContainsJSONPath.new('$geoplugin_countryName')
             poller = Poller::HTTP::HttpPoller.new('http://www.geoplugin.net/json.gp?ip=216.113.168.141', matcher, 5.0, 1.0)
-            poller.check.should be_nil
+            result = poller.check
+            result.should be_an_instance_of Array
+            result[0].should be_an_instance_of Net::HTTPOK
+            result[1].should be_a_kind_of Numeric
           end
         end
       end
