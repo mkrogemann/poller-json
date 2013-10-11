@@ -1,9 +1,17 @@
 Changelog
 =========
 
-Version 0.1.7 - unreleased
+Version 0.2.1 - released 2013-10-11
 -------------
 
+* Update dependencies
+* Test on rubinius (1.9 mode) and jruby (1.9 mode) too
+
+Version 0.2.0 - released 2013-08-26
+-------------
+
+* Update dependencies
+* API change, based on updated poller dependency. New version of poller does return tuple of http response and elapsed time rather than nil
 * Refactoring (remove duplication)
 
 Version 0.1.6 - released 2013-08-18
