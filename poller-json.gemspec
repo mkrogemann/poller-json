@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
     gem.add_runtime_dependency('rubysl', '~> 2.0')
     gem.add_runtime_dependency('rubysl-json', '~> 2.0.2')
+    gem.add_runtime_dependency('rubinius-coverage', '~> 2.0.3')
   else
     gem.add_runtime_dependency('multi_json', '~> 1.8.2') if RUBY_VERSION != '1.8.7'
     gem.add_runtime_dependency('json', '~> 1.8.1') if RUBY_VERSION == '1.8.7'
