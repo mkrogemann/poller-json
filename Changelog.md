@@ -1,6 +1,12 @@
 Changelog
 =========
 
+Version 0.2.2 - released 2013-12-06
+-------------
+
+* Make it work with Rubinius again. Handling Rubinius has become more complicated, might drop it.
+* Update dependencies
+
 Version 0.2.1 - released 2013-10-11
 -------------
 

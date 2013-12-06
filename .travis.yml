@@ -9,6 +9,3 @@ rvm:
   - rbx
 script:
   - COVERAGE=true bundle exec rspec spec
-matrix:
-  allow_failures:
-    - rvm: rbx
