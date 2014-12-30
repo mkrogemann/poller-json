@@ -9,7 +9,7 @@ module Matchers
         context 'document valid and json path exists' do
           it 'returns true if under a given JSON path we find the expected value' do
             dcj = DocumentContainsJSONPath.new('$menu.popup.menuitem[0].value')
-            dcj.matches?(sample_json_document).should be_true
+            expect(dcj.matches?(sample_json_document)).to be_truthy
           end
         end
 
@@ -27,13 +27,13 @@ module Matchers
           it 'returns false if path does not exist in JSON' do
             broken_path = '$menu.popdown.menuitem[0].value'
             dcj = DocumentContainsJSONPath.new(broken_path)
-            dcj.matches?(sample_json_document).should be_false
+            expect(dcj.matches?(sample_json_document)).to be_falsey
           end
 
           it 'returns false if JSON array contains fewer itmes than expected' do
             invalid_index = '$menu.popup.menuitem[10].value'
             dcj = DocumentContainsJSONPath.new(invalid_index)
-            dcj.matches?(sample_json_document).should be_false
+            expect(dcj.matches?(sample_json_document)).to be_falsey
           end
         end
 
