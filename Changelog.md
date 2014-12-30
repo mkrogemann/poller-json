@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Version 0.2.4 - released 2014-12-30
+-------------
+
+* Update dependencies and dev dependencies
+* Adjust test syntax to RSpec 3
+* Add support for MRI 2.2 (README and travis)
+
 Version 0.2.3 - released 2013-12-26
 -------------
 
