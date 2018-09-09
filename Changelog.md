@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Version 0.2.5 - released 2018-09-09
+-------------
+
+* No longer support MRI in versions < 2.0
+* Add MRI 2.4 and 2.5 to Travis build matrix
+* Fix some linting issues in gemspec
+
 Version 0.2.4 - released 2014-12-30
 -------------
 
