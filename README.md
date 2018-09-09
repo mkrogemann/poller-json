@@ -4,7 +4,6 @@ poller-json
 [![Build Status](https://travis-ci.org/mkrogemann/poller-json.png?branch=master)](https://travis-ci.org/mkrogemann/poller-json)
 [![Code Climate](https://codeclimate.com/github/mkrogemann/poller-json.png)](https://codeclimate.com/github/mkrogemann/poller-json)
 [![Coverage Status](https://coveralls.io/repos/mkrogemann/poller-json/badge.png?branch=master)](https://coveralls.io/r/mkrogemann/poller-json)
-[![Dependency Status](https://gemnasium.com/mkrogemann/poller-json.png)](https://gemnasium.com/mkrogemann/poller-json)
 [![Gem Version](https://badge.fury.io/rb/poller-json.png)](http://badge.fury.io/rb/poller-json)
 
 An extension of [poller](https://github.com/mkrogemann/poller) offering JSON matchers. Please consult the poller [README](https://github.com/mkrogemann/poller) before trying to use this gem to make the experience as smooth as possible.
@@ -107,7 +106,9 @@ As far as future development is concerned: I welcome Pull requests, proposals fo
 Design
 ------
 
-The gem has been developed to run in Ruby 1.9.3 and is being continuously integrated in MRI 2.3.0, 2.2.4, 2.1.8, 2.0.0 and 1.8.7 plus JRuby 9.0.4.0.
+The gem has been developed to run in Ruby 1.9.3 and is today being continuously integrated in MRI 2.0.x, 2.1.x, 2.2.x, 2.3.x, 2.4.x, 2.5.x plus in JRuby 9.0.4.0.
+
+It has become annoyingly difficult to still support 1.8.7 as well as 1.9.3 both locally and in Travis CI. The gem should still work with these MRI versions but they are no longer officially supported.
 
 In order to provide JSON parsing capability, the gem makes use of further gems: [multi_json](https://github.com/intridea/multi_json) on all platforms and [json](http://flori.github.io/json/) in the case of Ruby 1.8.7. Please note that the pure Ruby solution to JSON parsing, ie [json_pure](https://rubygems.org/gems/json_pure) will work fine in case you do not want to compile any C code (the json gem makes use of native libs) or in case you have to work on a system that does not allow it (no gcc available, etc.)
 
